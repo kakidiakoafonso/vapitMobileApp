@@ -26,4 +26,5 @@ export const FlatList = styled.FlatList`
 width: 100%;
 height: 100%;
 align-self: center;
+padding-top:10px;
 `;

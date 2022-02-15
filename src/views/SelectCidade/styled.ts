@@ -31,7 +31,7 @@ right: 0px;
 `;
 
 export const Select = styled.TouchableOpacity`
-width: 356px;
+width: 90%;
 height: 55px;
 background-color: ${cores.pink};
 align-items: center;

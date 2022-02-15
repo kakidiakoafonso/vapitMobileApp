@@ -11,10 +11,10 @@ justify-content: space-between;
 /* background-color: red; */
 `;
 export const ImageContainer = styled.View`
-width: 50px;
-height: 50px;
+width: 55px;
+height: 55px;
 background-color: ${cores.primary};
-border-radius: 3px;
+border-radius: 30px;
 justify-content: center;
 align-items: center;
 `;
