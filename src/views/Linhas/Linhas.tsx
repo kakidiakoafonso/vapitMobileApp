@@ -1,5 +1,5 @@
 import * as S from './styled'
-import React,{useState, } from 'react'
+import React,{useState,useEffect } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import LinhasComponent from '../../components/Linhas/Linhas'
 import { Dimensions } from 'react-native';
@@ -20,6 +20,11 @@ export default function Linhas()
     const index = params.nativeEvent.contentOffset.x/screenSize
     setactiveIndex(index)    
   }
+
+  useEffect(() => {
+    
+  }, [])
+  
   return (
     <S.Container>
         <S.SearchContainer>

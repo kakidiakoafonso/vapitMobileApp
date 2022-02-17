@@ -26,7 +26,7 @@ function Route()
 {
   const nav = useNavigation()
   return (
-      <Stack.Navigator initialRouteName='Horario'
+      <Stack.Navigator 
         screenOptions={{headerShown:false,
         headerLeft:()=>
         <BackButton activeOpacity={0.7} onPress={()=>nav.goBack()}>
