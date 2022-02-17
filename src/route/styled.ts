@@ -7,8 +7,9 @@ export const Box = styled.View`
 export const BackButton = styled.TouchableOpacity`
 width:60px;
 height:40px;
-align-items:center;
+/* align-items:center; */
 justify-content:center;
+/* background-color: red; */
 `;
 export const Logo = styled.Image`
 width:30px;

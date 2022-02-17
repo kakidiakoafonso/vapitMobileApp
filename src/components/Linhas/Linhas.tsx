@@ -4,12 +4,15 @@ import { AntDesign } from '@expo/vector-icons';
 import { cores } from '../../config/constants';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Linhas() 
+type Props = {
+route: "Paradas"| "Tab"
+}
+export default function Linhas({route="Tab"}:Props) 
 {
   const navigation = useNavigation()
   const handleClick = ()=>
   {
-    navigation.navigate('Tab')
+    navigation.navigate(route)
   }
   return (
     <S.Container activeOpacity={0.7} onPress={handleClick}>

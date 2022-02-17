@@ -12,7 +12,8 @@ export default function Home() {
             source={{uri:img}}
         />
         <S.Content>
-            <S.OptionList horizontal>
+            <S.OptionList horizontal 
+                showsHorizontalScrollIndicator={false}>
                     <S.Box activeOpacity={0.7}>
                         <S.TextTemperature>
                             Temperatura
@@ -20,9 +21,9 @@ export default function Home() {
                         <S.TextTemperatureValue>
                             2 ºC
                         </S.TextTemperatureValue>
-                        <S.TextTemperature style={{textAlign:'center'}}>
-                            Com previsão de chuva
-                        </S.TextTemperature>
+                        <S.TextBox style={{textAlign:'center'}}>
+                            Com previsão de chuva para hoje
+                        </S.TextBox>
                     </S.Box>
                     <S.Box activeOpacity={0.7}>
                         <S.TextTemperature>

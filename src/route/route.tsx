@@ -13,22 +13,37 @@ import Home from '../views/Home/Home';
 import { FontAwesome,AntDesign } from '@expo/vector-icons';
 import { BackButton, Box, Logo } from './styled';
 import Linhas from '../views/Linhas/Linhas';
-import { TouchableOpacity } from 'react-native';
 import { cores } from '../config/constants';
 import { useNavigation } from '@react-navigation/native';
+import Paradas from '../views/Paradas/Paradas';
+import Horario from '../views/Horario/Horario';
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function Route() {
+function Route() 
+{
+  const nav = useNavigation()
   return (
-      <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Navigator initialRouteName='Horario'
+        screenOptions={{headerShown:false,
+        headerLeft:()=>
+        <BackButton activeOpacity={0.7} onPress={()=>nav.goBack()}>
+            <AntDesign name="arrowleft" size={24} color={cores.white} />
+        </BackButton>,        
+        headerRight:()=>
+        <Logo source={require('../assets/images/Logo-White.png')}/>,
+        headerStyle:{backgroundColor:cores.purple80},
+        headerTitleStyle:{color:cores.white}       
+      }}>
         <Stack.Screen name="TourFirst" component={TourFirst} />
         <Stack.Screen name="TourSecond" component={TourSecond} />
         <Stack.Screen name="TourTird" component={TourTird} />
         <Stack.Screen name="SelectCidade" component={SelectCidade} />
         <Stack.Screen name="Cidades" component={Cidades} />
+        <Stack.Screen name="Paradas" component={Paradas} options={{headerShown:true,title:"Paradas das linhas"}}/>
+        <Stack.Screen name="Horario" component={Horario} options={{headerShown:true,title:"Grades de Horários"}}/>
         <Stack.Screen name="Tab" component={TabRoute} />
       </Stack.Navigator>
   );

@@ -9,50 +9,47 @@ export const Container = styled.SafeAreaView`
 flex:1;
 background-color: ${cores.purple};
 `;
-export const SearchContainer = styled.View`
-width: 353px;
-height: 36px;
-background-color: #464747;
-border-radius: 20px;
+export const SeletedContainer = styled.View`
+width: 95%;
+height: 63px;
 flex-direction: row;
 justify-content: space-evenly;
 align-items: center;
 align-self: center;
 margin-top: 5%;
 `;
-export const Search = styled.TextInput`
-width: 300px;
-height: 36px;
-border-radius: 20px;
-color: #FFFFFF;
-font-weight: bold;
+export const ImageContainer = styled.View`
+width: 60px;
+height: 60px;
+border-radius: 30px;
+background-color: #1EB479;
+align-items: center;
+justify-content: center;
+margin-right: 10px;
 `;
-export const RecentesContainer = styled.View`
-width: 353px;
-height: 135px;
-align-self: center;
-margin-top: 10px;
-
+export const Image = styled.Image`
+width: 35px;
+height: 35px;
 `;
-export const TextRecentesLabel = styled.Text`
-font-size: 18px;
-color: #FFFFFF;
-font-weight: bold;
-`;
-export const RecentesContnent = styled.View`
+export const SelectedContent = styled.View`
 flex: 1;
-padding-top: 10px;
-justify-content: space-between;
 `;
-export const RecentesItem = styled.TouchableOpacity`
-width: 100%;
-flex-direction: row;
+export const TextLinha = styled.Text`
+color: #DDE3F0;
+font-size: 18px;
 `;
-export const TextRecentes = styled.Text`
-color:#464747;
-font-size: 16px;
-font-weight: bold;
-margin-left: 15px;
+export const TextSentido = styled.Text`
+color: #ABB1CC;
+font-size: 14px;
+`;
+export const Label = styled.Text`
+color: #464747;
+font-size: 13px;
+margin-bottom:10px ;
+`;
+export const IconContainer = styled.Text`
+position: absolute;
+right: 0px;
 `;
 
 

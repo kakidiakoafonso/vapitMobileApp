@@ -9,22 +9,22 @@ align-items: center; */
 `;
 
 export const BannerBig = styled.Image`
-width:100%
-height:200px;
+width:100%;
+height:233px;
 `;
 export const Content = styled.View`
 flex: 1;
 `;
 export const OptionList = styled.ScrollView`
-max-height: 105px;
-padding-top:3px;
+max-height: 130px;
+padding-top:1px;
 padding-left:2px;
 margin-top:4px;
 /* background-color:red; */
 `;
 export const Box = styled.TouchableOpacity`
-width: 100px;
-height: 100px;
+width: 116px;
+height: 128px;
 border-radius:4px;
 justify-content: center;
 align-items: center; 
@@ -33,7 +33,12 @@ margin:0px 5px;
 `;
 
 export const TextTemperature = styled.Text`
-font-size: 12px;
+font-size: 16px;
+color:${cores.white};
+font-weight:bold;
+`;
+export const TextBox = styled.Text`
+font-size: 13px;
 color:${cores.white};
 font-weight:bold;
 `;

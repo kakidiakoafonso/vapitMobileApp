@@ -3,7 +3,7 @@ import { cores } from "../../config/constants";
 
 export const Container = styled.TouchableOpacity`
 width: 361px;
-height: 70px;
+height: 63px;
 margin-bottom: 10px;
 align-items: center;
 flex-direction: row;
