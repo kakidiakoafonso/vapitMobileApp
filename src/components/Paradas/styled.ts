@@ -7,7 +7,7 @@ flex-direction: row;
 justify-content: space-between;
 /* background-color: red; */
 `;
-export const IconContainer = styled.TouchableOpacity`
+export const IconContainer = styled.View`
 width: 32px;
 height: 32px;
 border-radius: 16px;
@@ -15,7 +15,7 @@ background-color: #8B4CEF;
 align-items: center;
 justify-content: center;
 `;
-export const InfoContainer = styled.TouchableOpacity`
+export const InfoContainer = styled.View`
 width: 90%;
 height: 50px;
 justify-content: center;

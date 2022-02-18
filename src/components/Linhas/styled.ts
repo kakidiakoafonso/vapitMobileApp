@@ -23,9 +23,13 @@ width: 32px;
 height: 31px;
 `;
 export const Content = styled.View`
-height: 48px;
+/* height: 48px;
 min-width:50%;
+max-width: 90%; */
 justify-content: space-between;
+/* background-color: red; */
+flex: 1;
+margin-left: 10px;
 `;
 export const Icon = styled.View`
 width: 80px;
@@ -36,7 +40,7 @@ align-items: center;
 `;
 export const NomeCidade = styled.Text`
 font-weight: bold;
-font-size: 18px;
+font-size: 13px;
 color: #DDE3F0;
 `;
 export const Data = styled.Text`

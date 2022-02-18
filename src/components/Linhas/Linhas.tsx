@@ -5,23 +5,23 @@ import { cores } from '../../config/constants';
 import { useNavigation } from '@react-navigation/native';
 
 type Props = {
-route: "Paradas"| "Tab"
+handleClick:()=>void,
+code:string,
+name:string,
+updatedAt:string
 }
-export default function Linhas({route="Tab"}:Props) 
-{
-  const navigation = useNavigation()
-  const handleClick = ()=>
-  {
-    navigation.navigate(route)
-  }
+export default function Linhas({handleClick,code,updatedAt,name}:Props) 
+{  
+  if(updatedAt==null) updatedAt = "22/21/2020"
+  
   return (
     <S.Container activeOpacity={0.7} onPress={handleClick}>
         <S.ImageContainer>
             <S.Image source={require('../../assets/images/onibus.png')}/>
         </S.ImageContainer>
         <S.Content>
-            <S.NomeCidade>021 - Interbairros ||</S.NomeCidade>
-            <S.Data>Atualizado em 21/03/2022</S.Data>
+            <S.NomeCidade>{code} - {name}</S.NomeCidade>
+            <S.Data>Atualizado em {updatedAt}</S.Data>
         </S.Content>
         <S.Icon>
             <AntDesign name="right" size={14} color={cores.white} />

@@ -4,6 +4,10 @@ import { AntDesign } from '@expo/vector-icons';
 import LinhasComponent from '../../components/Linhas/Linhas'
 import { Dimensions } from 'react-native';
 import {publicidades} from '../../services/data'
+import Banner from '../../components/Banner/Banner';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import api from '../../services/API';
+import Loading from '../../components/Loading/Loading';
 
 const img = "https://pbs.twimg.com/media/FBwMEAMWQAA6BOO.jpg"
 
@@ -11,19 +15,38 @@ const img = "https://pbs.twimg.com/media/FBwMEAMWQAA6BOO.jpg"
 const screenSize = Dimensions.get("screen").width
 export default function Linhas() 
 {
-  const [activeIndex, setactiveIndex] = useState<number>(1)
+  const navigation = useNavigation()
+  const {params} = useRoute()
+  console.log(params)
+  
   const [showRecents, setshowRecents] = useState<boolean>(false)
   const [searchText, setsearchText] = useState<string>("")
+  const [isloading, setisloading] = useState<boolean>(true)
+  const [lines, setlines] = useState([])
 
-  function scrollEndHandle(params:any) 
-  {
-    const index = params.nativeEvent.contentOffset.x/screenSize
-    setactiveIndex(index)    
-  }
-
+ 
   useEffect(() => {
-    
+    api.get('/cities/3/lines').then((response)=>
+    {
+      setlines(response.data.lines)
+      setisloading(false)
+    }).catch(error=>{
+      console.log(error);
+    })
   }, [])
+
+  const handleClick = (item:any)=>
+  {
+    navigation.navigate("Paradas",
+    {
+      idCidade:3,
+      linha:item
+    })
+    console.log("Click linhas");
+    console.log(item.id);
+    
+    
+  }
   
   return (
     <S.Container>
@@ -67,37 +90,21 @@ export default function Linhas()
         </S.TextLinhasContaianer>
 
         <S.LinhasContaianer>
-          <S.FlatListLinhas
-            data={[1,2,3,4,5]}
-            keyExtractor={e=>String(e)}
-            renderItem={()=><LinhasComponent route='Paradas'/>}
-          />
+          {isloading?
+            <Loading message='Carregando linhas da cidade'/>
+            :
+            <S.FlatListLinhas
+              data={lines}
+              keyExtractor={((item)=>item.id)}
+              renderItem={({item})=>
+              <LinhasComponent name={item.name}
+              code={item.code}  updatedAt={item.updated_at}
+              handleClick={()=>handleClick(item)}/>}
+            />}
         </S.LinhasContaianer>
 
-        <S.BannerContainer>
-        <S.FlatListBanner
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={publicidades}
-            pagingEnabled={true}            
-            onMomentumScrollEnd={scrollEndHandle}
-            keyExtractor={e=>String(e.img)}
-            renderItem={({item})=>(
-              <S.Banner
-                source={{uri:item.img}}
-                />
-            )}
-          />
-
-          <S.IndicatorContainer>
-            {
-              publicidades.map((e,i)=>
-              <S.Indicator key={i}
-                style={{backgroundColor:i==activeIndex? "#8B4CEF":"#464747"}}
-              />)      
-            }
-          </S.IndicatorContainer>
-        </S.BannerContainer>
+        <Banner/>
+       
     </S.Container>
   )
 }

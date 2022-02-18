@@ -4,46 +4,23 @@ import { AntDesign } from '@expo/vector-icons';
 import ParadasItem from '../../components/Paradas/Paradas'
 import { Dimensions } from 'react-native';
 import {publicidades} from '../../services/data'
+import { useRoute } from '@react-navigation/native';
+import Banner from '../../components/Banner/Banner';
 
 
 const screenSize = Dimensions.get("screen").width
 export default function Paradas() 
 {
-  const [activeIndex, setactiveIndex] = useState<number>(1)
+  const {params} = useRoute()
+  console.log("Parametros")
+  const {id,code,name} = params.linha
   const [showRecents, setshowRecents] = useState<boolean>(false)
   const [searchText, setsearchText] = useState<string>("")
 
-  function scrollEndHandle(params:any) 
-  {
-    const index = params.nativeEvent.contentOffset.x/screenSize
-    setactiveIndex(index)    
-  }
+  
   return (
     <S.Container>
-         <S.BannerContainer>
-            <S.FlatListBanner
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={publicidades}
-                pagingEnabled={true}            
-                onMomentumScrollEnd={scrollEndHandle}
-                keyExtractor={e=>String(e.img)}
-                renderItem={({item})=>(
-                  <S.Banner
-                    source={{uri:item.img}}
-                    />
-                )}
-              />
-
-            <S.IndicatorContainer>
-              {
-                publicidades.map((e,i)=>
-                <S.Indicator key={i}
-                  style={{backgroundColor:i==activeIndex? "#8B4CEF":"#464747"}}
-                />)      
-              }
-            </S.IndicatorContainer>
-        </S.BannerContainer>
+        <Banner/>
 
        <S.SeletedContainer>
          <S.ImageContainer>
@@ -53,7 +30,7 @@ export default function Paradas()
               <AntDesign name="right" size={16} color="#ABB1CC" />
             </S.IconContainer>
          <S.SelectedContent>
-              <S.TextLinha>021 - Interbairros II</S.TextLinha>
+              <S.TextLinha>{code} - {name}</S.TextLinha>
               <S.TextSentido>Sentido Anti-Horário / T. Capão Raso</S.TextSentido>
          </S.SelectedContent>
 

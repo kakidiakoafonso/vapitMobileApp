@@ -14,7 +14,8 @@ export default function CidadesItem({data}:Props)
   const handleClick = ()=>
   {
     navigation.navigate('Tab',{
-      idCidade:data.id
+      screen:"Home",
+      params:{idCidade:data.id}
     })
   }
   return (

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TourFirst from '../views/TourFirst/TourFirst';
 import TourSecond from '../views/TourSecond/TourSecond';
 import TourTird from '../views/TourTird/TourTird';
@@ -17,6 +17,7 @@ import { cores } from '../config/constants';
 import { useNavigation } from '@react-navigation/native';
 import Paradas from '../views/Paradas/Paradas';
 import Horario from '../views/Horario/Horario';
+import CustomTab from '../components/TabBar/Tab';
 
 
 const Stack = createNativeStackNavigator();
@@ -53,7 +54,9 @@ function TabRoute()
 {
   const nav = useNavigation()
   return (
-      <Tab.Navigator screenOptions={{headerShown:true,
+      <Tab.Navigator 
+        tabBar={((Props:BottomTabBarProps)=><CustomTab {...Props}/>)}
+      screenOptions={{headerShown:true,
         headerLeft:()=>
         <BackButton activeOpacity={0.7} onPress={()=>nav.goBack()}>
             <AntDesign name="arrowleft" size={24} color={cores.white} />

@@ -2,9 +2,12 @@ import * as S from './styled'
 import React from 'react'
 import { View,Text } from 'react-native'
 import Linhas from '../../components/Linhas/Linhas'
+import { useRoute } from '@react-navigation/native'
 
 const img = "https://th.bing.com/th/id/OIP.pTO3Xnlo6xmdBUIct6F1ygHaE7?pid=ImgDet&rs=1"
 export default function Home() {
+    const {params} = useRoute()
+    console.log(params)
   return (
     <S.Container>
         <S.BannerBig resizeMode='stretch'
